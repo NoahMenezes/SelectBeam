@@ -2,7 +2,7 @@
   "name": "selectbeam",
   "displayName": "SelectBeam",
   "description": "Send code to terminal AI or browser AI in Firefox, Edge, Chrome, Brave — same tab every time. No copy-paste.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "NoahMenezes",
   "license": "MIT",
   "icon": "icon.png",
@@ -16,23 +16,11 @@
   },
   "keywords": [
     "ai",
-    "chatgpt",
-    "claude",
-    "gemini",
-    "deepseek",
-    "grok",
-    "copilot",
-    "opencode",
-    "codex",
-    "aider",
-    "qwen",
-    "cursor",
-    "amp",
-    "goose",
-    "crush",
     "clipboard",
     "productivity",
-    "context"
+    "context",
+    "terminal",
+    "browser"
   ],
   "categories": [
     "AI"
@@ -212,7 +200,7 @@
     "package-vsix": "vsce package --allow-missing-repository",
     "publish:vscode": "vsce publish --allow-missing-repository",
     "publish:openvsx": "ovsx publish --allow-missing-repository",
-    "publish:all": "bun run package && vsce publish --allow-missing-repository --packagePath ./selectbeam-0.0.5.vsix && ovsx publish ./selectbeam-0.0.5.vsix",
+    "publish:all": "bun run package && vsce publish --allow-missing-repository --packagePath ./selectbeam-0.0.6.vsix && ovsx publish ./selectbeam-0.0.6.vsix",
     "check-types": "tsc --noEmit",
     "test": "echo \"No tests yet (V1)\" && exit 0"
   },

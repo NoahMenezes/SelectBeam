@@ -47,9 +47,9 @@ Not supported: Zed, Sublime, Neovim — different extension systems, not VSIX.
 
 ## Status
 
-- **VS Code extension:** v0.0.5, VS Code 1.85+. Terminal AI, browser AI, clipboard — all working.
-- **Edge Add-ons:** SelectBeam Bridge 0.0.4 submitted, **in review** (~7 business days).
-- **Firefox AMO:** SelectBeam Bridge 0.0.4 submitted, **awaiting review** (~3 days–3 weeks).
+- **VS Code extension:** v0.0.6, VS Code 1.85+. Terminal AI, browser AI, clipboard — all working.
+- **Edge Add-ons:** SelectBeam Bridge 0.0.4 submitted, link to follow after approval.
+- **Firefox AMO:** SelectBeam Bridge 0.0.4 submitted, link to follow after approval.
 - **Brave:** working via unpacked `selectbeam-bridge-brave-0.0.4.zip` (Brave-gated auto-paste fix included).
 - **Chrome Web Store:** listing prepped (`browser/CWS-LISTING.md`), on hold — one listing will cover Brave + Chrome + Opera + Vivaldi + Arc.
 - **Next up:** Safari (needs Xcode + Mac), Opera Add-ons.
@@ -118,18 +118,33 @@ Search `SelectBeam` in Settings (`Ctrl+,`). Defaults work for most people.
 
 Vanilla MV3, no build, no `npm install`. Works with all 6 AIs the same way. No token, no pairing — chat tabs link themselves on load.
 
-> Publisher TODO: replace the two `REPLACE-ME` links with real store URLs once Edge/AMO approve, then republish the VSIX.
-
 | Browser | Recommended | Fallback |
 |---|---|---|
-| **Edge** | [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/REPLACE-ME-WITH-YOUR-EDGE-LISTING-ID) (in review) | `edge://extensions` → Developer mode → Load unpacked → `browser/` |
-| **Firefox, Zen, LibreWolf…** | [Firefox AMO](https://addons.mozilla.org/firefox/addon/REPLACE-ME-WITH-YOUR-AMO-SLUG/) (awaiting review) | `about:debugging#/runtime/this-firefox` → Load Temporary Add-on → `browser/manifest.json` |
+| **Edge** | Edge Add-ons — submitted, link to follow | `edge://extensions` → Developer mode → Load unpacked → `browser/` |
+| **Firefox, Zen, LibreWolf…** | Firefox AMO — submitted, link to follow | `about:debugging#/runtime/this-firefox` → Load Temporary Add-on → `browser/manifest.json` |
 | **Brave** | Unzip `selectbeam-bridge-brave-0.0.4.zip` → `brave://extensions` → Developer mode → Load unpacked (CWS listing later covers it) | `browser/` folder directly |
 | **Chrome, Opera, Vivaldi, Arc** | CWS listing (prepped, on hold) | Same unpacked flow (`chrome://extensions`, `opera://extensions`, …). Opera also accepts CWS via “Install Chrome Extensions”. |
 
 Chromium unpacked loads use `browser/manifest.chrome.json` as `browser/manifest.json` (background key differs); Firefox uses `manifest.firefox.json`. Brave: Shields down for the chat site if fills miss; log in first (logged-out landings reject fill). **Safari:** later — needs an Xcode wrapper + Mac.
 
 Bridge: `http://127.0.0.1:51337` only, extension-origin check, no password. One VS Code window owns it; a second falls back to copy+open.
+
+## Privacy — what SelectBeam stores (Open VSX Data Information)
+
+SelectBeam works fully offline apart from opening AI chat sites you choose. No account, no API key, no analytics, no telemetry, no remote servers.
+
+What is handled, all on your own machine:
+
+- **Your selected code + file reference** (e.g. `MergeSort.py (lines 12-25)`): always copied to your clipboard first so nothing is lost, and held in an in-memory queue (max 20 items, max ~500KB each) so the browser companion can fill the chat box. Purpose: tab reuse. Retention: memory only, cleared on window close or via `SelectBeam: Choose Send Target` → Auto. Shared with: nobody — localhost only.
+- **Linked chat tabs** (provider id, page URL up to 500 chars, page title up to 200 chars, timestamp): reported by the optional browser companion over `http://127.0.0.1`. Purpose: refill the same tab instead of opening new tabs. Retention: expires after `selectbeam.liveTabTTLMinutes` (default 60 min, hard reuse window 90s); cleared via Choose Target → Auto. Shared with: nobody.
+- **Your picks** (remembered terminal name, terminal→agent map, last browser AI, last browser app): stored in VS Code `workspaceState`/`globalState` on your machine. Purpose: ask once, then automatic. Retention: until you reset via Choose Target → Auto. Shared with: nobody.
+- **Bridge port** (`51337` by default, changeable via `selectbeam.bridgePort`): stored in VS Code settings and in the companion's local storage. Purpose: localhost connection only.
+
+The localhost bridge binds `127.0.0.1` only, accepts only companion extension origins (`moz-extension://`, `chrome-extension://`) or no-origin local callers, and rejects any `http(s)` page origin — websites can never read your queue. Only the open health check `GET /status` (version + counts, no code) skips the origin check.
+
+The browser companion (separate store listing, not bundled in this VSIX) reads the open chat page's title/URL and fills its visible chat box. It never auto-submits, never contacts any server other than your localhost bridge.
+
+If this policy changes, it will be updated here before any new publish. Questions: https://github.com/NoahMenezes/SelectBeam/issues
 
 ## If something goes wrong
 
@@ -151,3 +166,11 @@ bun run package      # minified production build
 ```
 
 Press **F5** for the Extension Development Host. VS Code side is `src/` (see `docs/CODE-NOTES.md` for the module map — source files are comment-free by design). Browser side is `browser/`.
+
+## Support
+
+Bug reports and feature requests: https://github.com/NoahMenezes/SelectBeam/issues
+
+## Trademarks
+
+All third-party AI and browser names (ChatGPT, Claude, Gemini, DeepSeek, Grok, Copilot, Firefox, Edge, Chrome, Brave, etc.) and their sites are property of their respective owners. SelectBeam is an independent project with no affiliation with or endorsement by any of them.

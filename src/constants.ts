@@ -8,7 +8,7 @@ export const KEY_LAST_SYSTEM_BROWSER = "selectbeam.lastSystemBrowserId";
 export const KEY_LIVE_TABS = "selectbeam.liveTabs";
 export const EXT_ORIGIN_PREFIXES = ["moz-extension://", "chrome-extension://"];
 
-export const BRIDGE_VERSION = "0.0.5";
+export const BRIDGE_VERSION = "0.0.6";
 export const MAX_PENDING = 20;
 export const LIVE_REUSE_WINDOW_MS = 90_000;
 export const MAX_BODY_BYTES = 2 * 1024 * 1024;

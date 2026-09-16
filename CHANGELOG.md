@@ -2,7 +2,21 @@
 
 All changes to SelectBeam will be listed here.
 
-## [Unreleased] — cleanup + Windows fix
+## [0.0.6] — 2026-09-16 — Open VSX compliance
+
+- Open VSX Publisher Agreement: new `Privacy — what SelectBeam stores` section
+  in README (Data Information: what is stored locally, purpose, no sharing,
+  retention, localhost-only bridge). No behavior change.
+- Removed placeholder `REPLACE-ME` Edge/Firefox store links from README and
+  walkthroughs; store listings show "link to follow" until approval, then the
+  VSIX will be republished with real URLs. Status estimates removed.
+- Added trademark disclaimer (independent project, no affiliation) and support
+  link (GitHub Issues). Trimmed `package.json` keywords to generic terms.
+- Excluded `node_modules/` from the VSIX via `.vscodeignore`.
+- Bumped to 0.0.6 (bridge protocol version included) so listing, changelog,
+  and code agree.
+
+## [0.0.6] (also in this release) — cleanup + Windows fix
 
 - Removed all code comments (archived in `docs/CODE-NOTES.md`) and shortened
   sources ~30% with identical behavior and messages. README rewritten to current
