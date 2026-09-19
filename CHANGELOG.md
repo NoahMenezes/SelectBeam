@@ -2,6 +2,12 @@
 
 All changes to SelectBeam will be listed here.
 
+## [0.0.7] — 2026-09-19 — VS Code 2.x compatibility
+
+- Fixed `Extension is not compatible with Code 2.0.6. Extension requires: ^1.85.0.`
+  `engines.vscode` is now `>=1.85.0` instead of `^1.85.0`, so 1.85+ including
+  2.x installs. No code change.
+
 ## [0.0.6] — 2026-09-16 — Open VSX compliance
 
 - Open VSX Publisher Agreement: new `Privacy — what SelectBeam stores` section
