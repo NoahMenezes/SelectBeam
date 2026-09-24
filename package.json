@@ -118,7 +118,11 @@
       "properties": {
         "selectbeam.defaultTarget": {
           "type": "string",
-          "enum": ["auto", "clipboard", "terminal"],
+          "enum": [
+            "auto",
+            "clipboard",
+            "terminal"
+          ],
           "default": "auto",
           "description": "Where your code goes. Auto tries the terminal first and copies if needed. Clipboard always just copies. Terminal always uses the terminal."
         },
@@ -144,7 +148,16 @@
         },
         "selectbeam.defaultBrowser": {
           "type": "string",
-          "enum": ["ask", "last", "chatgpt", "claude", "gemini", "deepseek", "grok", "copilot"],
+          "enum": [
+            "ask",
+            "last",
+            "chatgpt",
+            "claude",
+            "gemini",
+            "deepseek",
+            "grok",
+            "copilot"
+          ],
           "default": "last",
           "description": "Which browser AI the shortcut sends to. Last reuses your last pick (ask once, then automatic). Ask shows a list every time. Or fix one. The palette command always lets you pick."
         },
@@ -155,7 +168,16 @@
         },
         "selectbeam.systemBrowser": {
           "type": "string",
-          "enum": ["ask", "last", "system", "firefox", "edge", "chrome", "chromium", "brave"],
+          "enum": [
+            "ask",
+            "last",
+            "system",
+            "firefox",
+            "edge",
+            "chrome",
+            "chromium",
+            "brave"
+          ],
           "default": "ask",
           "description": "Which browser app opens the chat. Ask shows Firefox / Edge picker every time. Last reuses your last app. Or fix one."
         },
@@ -202,6 +224,10 @@
     "publish:openvsx": "ovsx publish --allow-missing-repository",
     "publish:all": "bun run package && vsce publish --allow-missing-repository --packagePath ./selectbeam-0.0.7.vsix && ovsx publish ./selectbeam-0.0.7.vsix",
     "check-types": "tsc --noEmit",
+    "format": "bunx prettier --write .",
+    "format:check": "bunx prettier --check .",
+    "clean": "rm -rf dist",
+    "labels": "bash scripts/setup-labels.sh",
     "test": "echo \"No tests yet (V1)\" && exit 0"
   },
   "devDependencies": {

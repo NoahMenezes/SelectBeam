@@ -1,0 +1,56 @@
+name: Feature request
+description: Suggest an idea or improvement for SelectBeam.
+title: "[feat]: "
+labels: [enhancement, needs triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea! Small, well-scoped requests land fastest.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What pain or workflow does this solve? Who benefits?
+      placeholder: "When I …, I have to …"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should happen instead? Be specific about UX (commands, settings, pickers).
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other ways to solve it, and why they are worse.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Terminal send
+        - Browser send
+        - Browser companion
+        - Settings / configuration
+        - Docs / DX
+        - Other
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints check
+      description: SelectBeam's non-negotiables — confirm your idea fits them.
+      options:
+        - label: No auto-submit — the user always reviews and presses Enter themselves.
+          required: true
+        - label: No telemetry / remote servers / API keys — localhost bridge only.
+          required: true
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to implement this (or help test it).

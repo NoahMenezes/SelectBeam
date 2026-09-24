@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question / Discussion
+    url: https://github.com/NoahMenezes/SelectBeam/issues/new?template=feature_request.yml
+    about: Not a bug? Use the feature-request form and describe what you are trying to do.
+  - name: Security report
+    url: https://github.com/NoahMenezes/SelectBeam/blob/main/SECURITY.md
+    about: Security-sensitive finding — follow SECURITY.md, do not open a public issue.

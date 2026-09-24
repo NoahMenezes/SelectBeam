@@ -2,6 +2,10 @@
 
 All changes to SelectBeam will be listed here.
 
+## [Unreleased]
+
+- Contributor scaffolding: `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, issue/PR templates, `CODEOWNERS`, Dependabot, CI (`check-types` + `compile` + `format:check`), Prettier + EditorConfig, `.nvmrc`. No behavior change.
+
 ## [0.0.7] — 2026-09-19 — VS Code 2.x compatibility
 
 - Fixed `Extension is not compatible with Code 2.0.6. Extension requires: ^1.85.0.`

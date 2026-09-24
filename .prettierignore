@@ -1,0 +1,12 @@
+# Prettier intentionally skips hand-compacted sources and vendored output.
+# src/ and browser/ use a compact style (see docs/CODE-NOTES.md); formatting
+# them would create churn with zero benefit. Contributor-facing files
+# (docs, templates, workflows, package.json) are still checked in CI.
+src/
+browser/
+dist/
+node_modules/
+bun.lock
+*.vsix
+*.zip
+*.map

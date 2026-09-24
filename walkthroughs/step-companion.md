@@ -7,6 +7,7 @@ No token, no account, nothing to type. Store listings are submitted (links will 
 - **Brave / Chrome / Opera / Vivaldi / Arc:** use the Chrome Web Store listing once published (one listing covers all of them). Until then: copy `browser/manifest.chrome.json` over `browser/manifest.json`, then your browser's extensions page → Developer mode → Load unpacked → `browser/`.
 
 Fallback without stores:
+
 - **Firefox family:** `about:debugging` → Load Temporary Add-on → `browser/manifest.json`.
 - **Chromium family:** your browser's extensions page → Developer mode → Load unpacked → `browser/`.
 

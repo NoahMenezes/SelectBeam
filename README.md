@@ -1,5 +1,9 @@
 # SelectBeam
 
+[![CI](https://github.com/NoahMenezes/SelectBeam/actions/workflows/ci.yml/badge.svg)](https://github.com/NoahMenezes/SelectBeam/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 > Highlight code, press one shortcut, send it to terminal AI or browser AI — same tab every time. No copy-paste.
 
 SelectBeam hands your selected code to an AI, with file name and line numbers attached:
@@ -21,15 +25,15 @@ Repo: https://github.com/NoahMenezes/SelectBeam
 Same code, same `.vsix` — SelectBeam uses only stable VS Code APIs, so one
 build runs on every VS Code-compatible editor.
 
-| Editor | How to install |
-|---|---|
-| **VS Code** | Extensions view (`Ctrl+Shift+X`) → search `SelectBeam`, or `vsce publish` listing. |
-| **VSCodium** | Extensions view → search `SelectBeam` on **Open VSX** (`open-vsx.org`). VSCodium can't use Microsoft's gallery, so Open VSX is its native source. |
-| **Cursor** | Extensions view usually syncs the VS Marketplace listing — search `SelectBeam`. If a version lags, `Ctrl+Shift+P` → `Extensions: Install from VSIX…` with the `.vsix` from GitHub Releases. |
-| **Windsurf** | Same as Cursor: gallery search first, else `Install from VSIX…`. CLI: `windsurf --install-extension selectbeam-*.vsix`. |
-| **Antigravity** | `...` menu in Extensions view → `Install from VSIX…`, or CLI: `antigravity --install-extension selectbeam-*.vsix`. Open VSX search also works. |
-| **Theia / Gitpod / Eclipse / Positron** | Native Open VSX gallery — search `SelectBeam`. |
-| **Devin** | Not a marketplace editor — it works inside your repo. Run `code --install-extension selectbeam-*.vsix` in its environment, or add the `.vsix` to your devcontainer setup. |
+| Editor                                  | How to install                                                                                                                                                                              |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **VS Code**                             | Extensions view (`Ctrl+Shift+X`) → search `SelectBeam`, or `vsce publish` listing.                                                                                                          |
+| **VSCodium**                            | Extensions view → search `SelectBeam` on **Open VSX** (`open-vsx.org`). VSCodium can't use Microsoft's gallery, so Open VSX is its native source.                                           |
+| **Cursor**                              | Extensions view usually syncs the VS Marketplace listing — search `SelectBeam`. If a version lags, `Ctrl+Shift+P` → `Extensions: Install from VSIX…` with the `.vsix` from GitHub Releases. |
+| **Windsurf**                            | Same as Cursor: gallery search first, else `Install from VSIX…`. CLI: `windsurf --install-extension selectbeam-*.vsix`.                                                                     |
+| **Antigravity**                         | `...` menu in Extensions view → `Install from VSIX…`, or CLI: `antigravity --install-extension selectbeam-*.vsix`. Open VSX search also works.                                              |
+| **Theia / Gitpod / Eclipse / Positron** | Native Open VSX gallery — search `SelectBeam`.                                                                                                                                              |
+| **Devin**                               | Not a marketplace editor — it works inside your repo. Run `code --install-extension selectbeam-*.vsix` in its environment, or add the `.vsix` to your devcontainer setup.                   |
 
 Maintainer notes (publishing both galleries):
 
@@ -75,55 +79,55 @@ First send to a new AI picks the browser app (Firefox, Edge, Chrome, Brave…), 
 
 ## Mac keys
 
-| Windows / Linux | Mac |
-|---|---|
-| `Ctrl+Alt+A` | `Cmd+Alt+A` |
-| `Ctrl+V` | `Cmd+V` |
-| `Ctrl+Shift+P` | `Cmd+Shift+P` |
-| `Ctrl+,` | `Cmd+,` |
+| Windows / Linux | Mac           |
+| --------------- | ------------- |
+| `Ctrl+Alt+A`    | `Cmd+Alt+A`   |
+| `Ctrl+V`        | `Cmd+V`       |
+| `Ctrl+Shift+P`  | `Cmd+Shift+P` |
+| `Ctrl+,`        | `Cmd+,`       |
 
 If the shortcut does nothing, rebind it under File → Preferences → Keyboard Shortcuts (macOS sometimes reserves `Cmd+Alt` combos).
 
 ## Commands
 
-| Command | What it does |
-|---|---|
-| SelectBeam: Send Selection to AI | Sends to a terminal AI (or pick a browser AI from the same list). Shortcut + right-click. |
-| SelectBeam: Send Selection to Browser AI | Always lets you pick the AI (and remembers it). |
-| SelectBeam: Choose Send Target | Reset to Auto, clipboard-only for this session, or pin one terminal. Auto clears all saved picks, live tabs, and queue. |
-| SelectBeam: Show Browser Bridge Status | Bridge port, linked tabs, queued items. |
+| Command                                  | What it does                                                                                                            |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| SelectBeam: Send Selection to AI         | Sends to a terminal AI (or pick a browser AI from the same list). Shortcut + right-click.                               |
+| SelectBeam: Send Selection to Browser AI | Always lets you pick the AI (and remembers it).                                                                         |
+| SelectBeam: Choose Send Target           | Reset to Auto, clipboard-only for this session, or pin one terminal. Auto clears all saved picks, live tabs, and queue. |
+| SelectBeam: Show Browser Bridge Status   | Bridge port, linked tabs, queued items.                                                                                 |
 
 ## Settings
 
 Search `SelectBeam` in Settings (`Ctrl+,`). Defaults work for most people.
 
-| Setting | Default | Meaning |
-|---|---|---|
-| `selectbeam.defaultTarget` | `"auto"` | `"auto"` = terminal first, clipboard fallback. `"clipboard"` = always copy. `"terminal"` = always terminal. |
-| `selectbeam.rememberTerminalChoice` | `true` | Ask once, not every time. |
-| `selectbeam.askForPrompt` | `true` | Ask for a note after code (`explain this`). Empty = code only. |
-| `selectbeam.agentStartDelayMs` | `2000` | Wait after starting an AI tool before pasting (ms). |
-| `selectbeam.agentCommands` | `{}` | Override tool binaries, e.g. `{ "copilot": "gh copilot" }`. |
-| `selectbeam.defaultBrowser` | `"last"` | Ask once, then automatic. `"ask"` = every time, or fix one AI. |
-| `selectbeam.rememberBrowserChoice` | `true` | Remembers browser pick for `"last"`. |
-| `selectbeam.systemBrowser` | `"ask"` | Which app opens the chat: `"ask"`, `"last"`, `"system"`, `"firefox"`, `"edge"`, `"chrome"`, `"chromium"`, `"brave"`. |
-| `selectbeam.rememberSystemBrowserChoice` | `true` | Remembers app pick for `"last"`. |
-| `selectbeam.browserUrls` | `{}` | Override chat URLs, e.g. `{ "deepseek": "https://chat.deepseek.com/" }`. |
-| `selectbeam.reuseBrowserTab` | `true` | Reuse the linked tab. Needs the companion. |
-| `selectbeam.liveTabTTLMinutes` | `60` | Outer bound for linked-tab freshness (tabs also heartbeat every 15s; stale tabs open fresh). |
-| `selectbeam.bridgeEnabled` | `true` | Run the localhost bridge. Off = copy+open only. |
-| `selectbeam.bridgePort` | `51337` | Change only if taken. |
+| Setting                                  | Default  | Meaning                                                                                                              |
+| ---------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| `selectbeam.defaultTarget`               | `"auto"` | `"auto"` = terminal first, clipboard fallback. `"clipboard"` = always copy. `"terminal"` = always terminal.          |
+| `selectbeam.rememberTerminalChoice`      | `true`   | Ask once, not every time.                                                                                            |
+| `selectbeam.askForPrompt`                | `true`   | Ask for a note after code (`explain this`). Empty = code only.                                                       |
+| `selectbeam.agentStartDelayMs`           | `2000`   | Wait after starting an AI tool before pasting (ms).                                                                  |
+| `selectbeam.agentCommands`               | `{}`     | Override tool binaries, e.g. `{ "copilot": "gh copilot" }`.                                                          |
+| `selectbeam.defaultBrowser`              | `"last"` | Ask once, then automatic. `"ask"` = every time, or fix one AI.                                                       |
+| `selectbeam.rememberBrowserChoice`       | `true`   | Remembers browser pick for `"last"`.                                                                                 |
+| `selectbeam.systemBrowser`               | `"ask"`  | Which app opens the chat: `"ask"`, `"last"`, `"system"`, `"firefox"`, `"edge"`, `"chrome"`, `"chromium"`, `"brave"`. |
+| `selectbeam.rememberSystemBrowserChoice` | `true`   | Remembers app pick for `"last"`.                                                                                     |
+| `selectbeam.browserUrls`                 | `{}`     | Override chat URLs, e.g. `{ "deepseek": "https://chat.deepseek.com/" }`.                                             |
+| `selectbeam.reuseBrowserTab`             | `true`   | Reuse the linked tab. Needs the companion.                                                                           |
+| `selectbeam.liveTabTTLMinutes`           | `60`     | Outer bound for linked-tab freshness (tabs also heartbeat every 15s; stale tabs open fresh).                         |
+| `selectbeam.bridgeEnabled`               | `true`   | Run the localhost bridge. Off = copy+open only.                                                                      |
+| `selectbeam.bridgePort`                  | `51337`  | Change only if taken.                                                                                                |
 
 ## Browser companion
 
 Vanilla MV3, no build, no `npm install`. Works with all 6 AIs the same way. No token, no pairing — chat tabs link themselves on load.
 
-| Browser | Recommended | Fallback |
-|---|---|---|
-| **Edge** | Edge Add-ons — submitted, link to follow | `edge://extensions` → Developer mode → Load unpacked → `browser/` |
-| **Firefox, Zen, LibreWolf…** | Firefox AMO — submitted, link to follow | `about:debugging#/runtime/this-firefox` → Load Temporary Add-on → `browser/manifest.json` |
-| **Brave** | Unzip `selectbeam-bridge-brave-0.0.4.zip` → `brave://extensions` → Developer mode → Load unpacked (CWS listing later covers it) | `browser/` folder directly |
-| **Chrome, Opera, Vivaldi, Arc** | CWS listing (prepped, on hold) | Same unpacked flow (`chrome://extensions`, `opera://extensions`, …). Opera also accepts CWS via “Install Chrome Extensions”. |
+| Browser                         | Recommended                                                                                                                     | Fallback                                                                                                                     |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Edge**                        | Edge Add-ons — submitted, link to follow                                                                                        | `edge://extensions` → Developer mode → Load unpacked → `browser/`                                                            |
+| **Firefox, Zen, LibreWolf…**    | Firefox AMO — submitted, link to follow                                                                                         | `about:debugging#/runtime/this-firefox` → Load Temporary Add-on → `browser/manifest.json`                                    |
+| **Brave**                       | Unzip `selectbeam-bridge-brave-0.0.4.zip` → `brave://extensions` → Developer mode → Load unpacked (CWS listing later covers it) | `browser/` folder directly                                                                                                   |
+| **Chrome, Opera, Vivaldi, Arc** | CWS listing (prepped, on hold)                                                                                                  | Same unpacked flow (`chrome://extensions`, `opera://extensions`, …). Opera also accepts CWS via “Install Chrome Extensions”. |
 
 Chromium unpacked loads use `browser/manifest.chrome.json` as `browser/manifest.json` (background key differs); Firefox uses `manifest.firefox.json`. Brave: Shields down for the chat site if fills miss; log in first (logged-out landings reject fill). **Safari:** later — needs an Xcode wrapper + Mac.
 
@@ -167,9 +171,17 @@ bun run package      # minified production build
 
 Press **F5** for the Extension Development Host. VS Code side is `src/` (see `docs/CODE-NOTES.md` for the module map — source files are comment-free by design). Browser side is `browser/`.
 
+## Contributing
+
+Contributions are welcome! See [`CONTRIBUTING.md`](CONTRIBUTING.md) for setup (`bun install`, `bun run check-types`, `bun run compile`, F5), conventions, and the PR checklist. Please read our [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and report security findings privately per [`SECURITY.md`](SECURITY.md).
+
 ## Support
 
 Bug reports and feature requests: https://github.com/NoahMenezes/SelectBeam/issues
+
+## License
+
+MIT — see [LICENSE](LICENSE).
 
 ## Trademarks
 

@@ -1,0 +1,84 @@
+name: Bug report
+description: Something is broken — tell us how to reproduce it.
+title: "[bug]: "
+labels: [bug, needs triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please fill this in so we can reproduce it fast.
+        Security-sensitive findings go through `SECURITY.md`, not here.
+  - type: input
+    id: version
+    attributes:
+      label: SelectBeam version
+      description: e.g. 0.0.7, or commit hash if running from source.
+      placeholder: "0.0.7"
+    validations:
+      required: true
+  - type: input
+    id: editor
+    attributes:
+      label: Editor + version
+      description: e.g. VS Code 1.95, VSCodium 1.95, Cursor ….
+      placeholder: "VS Code 1.95"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      description: e.g. Windows 11, macOS 15, Ubuntu 24.04.
+      placeholder: "Ubuntu 24.04"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Terminal send
+        - Browser send (copy+open)
+        - Browser send (companion tab reuse)
+        - Settings / configuration
+        - Install / activation / other
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps, starting from a highlighted selection.
+      placeholder: |
+        1. Highlight code in …
+        2. Press Ctrl+Alt+A …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected-actual
+    attributes:
+      label: Expected vs actual
+      description: What should have happened, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: bridge
+    attributes:
+      label: Bridge Status output (if tab-reuse related)
+      description: "Run 'SelectBeam: Show Browser Bridge Status' and paste the result. Redact code."
+      placeholder: "paste here, or N/A"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Extension Host output, toast text, screenshots. Never paste secrets.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for duplicates.
+          required: true
+        - label: I can reproduce on the latest version / `main`.
+          required: true
