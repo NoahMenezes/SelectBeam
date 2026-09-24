@@ -28,6 +28,6 @@ jobs:
       # 3. Attach the .vsix to the GitHub Release so Cursor / Windsurf /
       #    Antigravity / VSCodium users can always "Install from VSIX" manually.
       - name: Attach VSIX to release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: "*.vsix"
